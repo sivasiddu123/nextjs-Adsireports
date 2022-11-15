@@ -20,7 +20,7 @@ var today = moment().format("YYYY-MM-DD")
 // var today = "2022-11-03"
 
 
-const response =await fetch(`https://graph.facebook.com/v14.0/act_${acc_number}/insights?fields=campaign_id,campaign_name&level=campaign&limit=500&filtering=[{%22field%22:%22spend%22,%22operator%22:%22GREATER_THAN%22,%22value%22:%220%22}]&time_range={"since":"${today}","until":"${today}"}&access_token=EAAGAqSOqBOMBAEFoahGiyxUot7q8azV7yzydc0cSxMQC9XwWiwNKP1zFCJ77EM9cfxflNl93nB4LutqDiWj66ipBJDQgbpZBZCP9ZCJ8hNm0dG0DRWNTFI7HmctIErR8dpeVER1kNJVi54cBdIwEsSrXpB1MHjPUIIrEf8iVXibZCoUyjqSA`)
+const response =await fetch(`https://graph.facebook.com/v14.0/act_${acc_number}/insights?fields=campaign_id,campaign_name&level=campaign&limit=500&filtering=[{%22field%22:%22spend%22,%22operator%22:%22GREATER_THAN%22,%22value%22:%220%22}]&time_range={"since":"${today}","until":"${today}"}&access_token=EAAGAqSOqBOMBAFjy7sVjgcdRpS6RqoIPPXheBqpxMlBZA9gbwWhIhwOtfcVEZATZA2OU0KqXaBampzQz3tefZB45EjlwY00ZBhj2QxJg7tjDwHoAwCTWBYy5ZAK3ZBTTbZAWfKEPdivuA2RKRjF7BAFGr1s7nZAyaWOKjvxMdddPFz1aC8wSGHNgf`)
 
 
    .then(function(response){
@@ -52,7 +52,7 @@ for (var i = 0; i<campsids.length; i++){
          var fbid=newArr[i];
         //  console.log(`${fbid}`);
         async function idsum(){
-            const ids =await fetch(`https://graph.facebook.com/v14.0/act_${acc_number}/insights?breakdowns=hourly_stats_aggregated_by_advertiser_time_zone&fields=clicks,adset_id,campaign_id,campaign_name,adset_name,ad_id,ad_name,spend,inline_link_clicks,impressions,attribution_setting,cpc,actions&filtering=[{"field":"campaign.id","operator":"IN", "value":[${fbid}]}]&level=adset&time_range={"since":"${today}","until":"${today}"}&limit=10000&access_token=EAAGAqSOqBOMBAEFoahGiyxUot7q8azV7yzydc0cSxMQC9XwWiwNKP1zFCJ77EM9cfxflNl93nB4LutqDiWj66ipBJDQgbpZBZCP9ZCJ8hNm0dG0DRWNTFI7HmctIErR8dpeVER1kNJVi54cBdIwEsSrXpB1MHjPUIIrEf8iVXibZCoUyjqSA`)
+            const ids =await fetch(`https://graph.facebook.com/v14.0/act_${acc_number}/insights?breakdowns=hourly_stats_aggregated_by_advertiser_time_zone&fields=clicks,adset_id,campaign_id,campaign_name,adset_name,ad_id,ad_name,spend,inline_link_clicks,impressions,attribution_setting,cpc,actions&filtering=[{"field":"campaign.id","operator":"IN", "value":[${fbid}]}]&level=adset&time_range={"since":"${today}","until":"${today}"}&limit=10000&access_token=EAAGAqSOqBOMBAFjy7sVjgcdRpS6RqoIPPXheBqpxMlBZA9gbwWhIhwOtfcVEZATZA2OU0KqXaBampzQz3tefZB45EjlwY00ZBhj2QxJg7tjDwHoAwCTWBYy5ZAK3ZBTTbZAWfKEPdivuA2RKRjF7BAFGr1s7nZAyaWOKjvxMdddPFz1aC8wSGHNgf`)
             .then(function(ids){
                 const resData =  ids.json()
                 return resData
@@ -146,12 +146,12 @@ for (var i = 0; i<campsids.length; i++){
 
                   //  console.log("slope", slope)
                    await client.connect()
-                  //  await client.db("LocalTest").collection("moment_fb").deleteMany({delet_date:today})
+                   await client.db("LocalTest").collection("moment_fb").deleteMany({delet_date:today})
                   //  date_start:today
-                  //  await client.db("LocalTest").collection("moment_fb").insertMany(filter)
+                   await client.db("LocalTest").collection("moment_fb").insertMany(filter)
                   // const data = await client.db("LocalTest").collection("sope").find({}).toArray()
                   // console.log(filter.length)
-                  console.log(filter.length)
+                  console.log("data inseted")
 
                   client.close()
                   }

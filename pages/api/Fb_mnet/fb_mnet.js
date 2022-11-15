@@ -54,6 +54,7 @@ var dataf = []
                         m_conv_totalClicks:element.totalClicks,
                         estimatedRevenue:element.estimatedRevenue,
                         m_hour:element.m_hour,
+                        delete_date:today,
                         // CDT_timestamp:element.CDT_timestamp,
                         // CDTHour:element.CDTHour,
                         // CDTDate:element.CDTDate,
@@ -76,8 +77,8 @@ var dataf = []
         const client = await mClient()
     //   console.log("slope", slope)
       await client.connect()
-    //   await client.db("LocalTest").collection("Fb_Mnet").deleteMany({})
-    //   await client.db("LocalTest").collection("Fb_Mnet").insertMany(swipe)
+      await client.db("LocalTest").collection("Fb_Mnet").deleteMany({delete_date:today})
+      await client.db("LocalTest").collection("Fb_Mnet").insertMany(swipe)
      // const data = await client.db("LocalTest").collection("sope").find({}).toArray()
      console.log(swipe.length)
 

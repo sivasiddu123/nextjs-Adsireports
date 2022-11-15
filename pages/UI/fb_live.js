@@ -1,6 +1,7 @@
 import {MongoClient} from "mongodb";
 import { AgGridReact } from "ag-grid-react";
 import { useMemo } from "react";
+import moment from "moment-timezone";
 
 import "ag-grid-enterprise";
 import "ag-grid-community/dist/styles/ag-grid.css";
@@ -119,7 +120,7 @@ export default function About(props) {
         </div>
       );
 }
-    
+var today = moment().format("YYYY-MM-DD")  
 export async function getServerSideProps() {
 
     const mClient = async () => {
@@ -130,7 +131,7 @@ export async function getServerSideProps() {
       }; 
       const client = await mClient()
         await client.connect()
-        const data = await client.db("LocalTest").collection("Fb_Mnet").find({}).project({_id:0}).toArray()
+        const data = await client.db("LocalTest").collection("Fb_Mnet").find({date_start:today}).project({_id:0}).toArray()
         console.log(data.length)
 
     return {

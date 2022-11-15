@@ -103,12 +103,12 @@ const response =await axios(`https://pubconsole.media.net/api/reports/v1/hourly-
         const client = await mClient()
                 //    console.log("slope", slope)
                    await client.connect()
-                  //  await client.db("LocalTest").collection("mm").deleteMany({name:"Adsi",delet_date:today});
+                   await client.db("LocalTest").collection("moment_mnet").deleteMany({name:"Adsi",delet_date:today});
                   //  moment_mnet
                    
-                   await client.db("LocalTest").collection("mm").insertMany(mnet)
+                   await client.db("LocalTest").collection("moment_mnet").insertMany(mnet)
                 //   const data = await client.db("LocalTest").collection("sope").find({}).toArray()
-                  console.log(mnet.length)
+                  console.log(mnet,"datainserted")
                   client.close()
     // // }
 })
